@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["dom", "es2015", "es2017"],
+    "lib": ["dom", "es2015", "es2017", "esnext"],
     "sourceMap": true,
-    "moduleResolution": "node"
-  }
+    "types": ["@pyoner/svelte-types"],
+    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+  },
+  "include": ["src/**/*", "./figma.d.ts"]
 }
