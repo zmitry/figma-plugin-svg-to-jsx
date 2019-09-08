@@ -18,17 +18,7 @@ function safe_tags_replace(str) {
 
 figma.currentPage.selection.map(selected => {
   selected.exportAsync({ format: "SVG" }).then(svgCode => {
-    const svg = ab2str(svgCode);
     figma.showUI(__html__, { visible: true, width: 700, height: 300 });
-    figma.ui.postMessage({ type: "networkRequest", data: svg });
-    figma.ui.onmessage = async msg => {
-      figma.showUI(
-        `
-  <pre><code style="white-space:pre-wrap;">${safe_tags_replace(
-    msg
-  )}</code></pre>
-`
-      );
-    };
+    figma.ui.postMessage({ type: "networkRequest", data: ab2str(svgCode) });
   });
 });

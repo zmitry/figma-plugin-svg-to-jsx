@@ -8,25 +8,26 @@
 
 <script>
   import { dataStore, copyToClipboard, getSvg } from "./svg.js";
+  import { debounce } from "lodash";
+
   let loading = false;
   let data;
   let item;
   let svgContent;
   let replaceAttr = "";
   let options = {};
-  async function load({ replaceAttr }) {
+  const load = debounce(async function({ replaceAttr }) {
     loading = true;
     const replaceAttrValues = replaceAttr.split(",").reduce((acc, el) => {
       let [key, value] = el.split("=");
       acc[key] = value;
       return acc;
     }, {});
-    console.log(replaceAttrValues);
     data = await getSvg($dataStore, {
       replaceAttrValues: replaceAttrValues
     });
     loading = false;
-  }
+  }, 100);
   $: if ($dataStore) {
     load({ replaceAttr });
   }
