@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@pyoner/svelte-types": "^3.4.4-2",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "highlight.js": "^9.15.10",
